@@ -1,6 +1,6 @@
 ## سلام 🙌
 
-مدیر:https://github.com/orgs/ra-st/people/abol313
+مدیر:https://github.com/abol313
 
 محل گفتگو:https://github.com/orgs/ra-st/discussions
 
