@@ -1,0 +1,153 @@
+<html>
+<head>
+  <title>RAST Team - 404</title>
+  <link href="https://avatars.githubusercontent.com/u/105214374?s=200&v=4" rel="shortcut icon">.
+  <style>
+  // SCSS Variables //
+$radius: 30px;
+$navbar-bg: #ffffff;
+$tabs-bg: #f66969;
+
+/* Reset CSS */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html {
+	font-size: 10px;
+	@media (max-width: 600px) {
+		font-size: 8px;
+	}
+}
+body {
+	background-color: $tabs-bg;
+	height: 100vh;
+	min-height: 400px;
+	display: flex;
+	align-items: center;
+	font-family: sans-serif;
+}
+
+/* Navbar Style */
+.navbar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 30rem;
+	height: 100%;
+	padding-left: 2rem;
+	background-color: $navbar-bg;
+	overflow-y: hidden;
+	&-brand{
+		color: #575757;
+		font-size: 3rem;
+		font-weight: bold;
+		text-decoration: none;
+		margin: 4rem 0 0.3rem;
+		span{
+			color: $tabs-bg;
+		}
+	}
+	&-nav {
+		width: 100%;
+		list-style: none;
+		margin: auto 0;
+	}
+	&-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		color: #222222;
+		font-size: 2rem;
+		text-decoration: none;
+		position: relative;
+		padding: 2rem;
+		border-radius: $radius 0 0 $radius;
+		-webkit-tap-highlight-color: transparent;
+		span{
+			position: relative;
+			z-index: 1;
+		}
+		&:hover{
+			text-decoration: underline $tabs-bg;
+		}
+	}
+	&-item {
+		margin: 3rem 0;
+		&.active .navbar-link {
+			color: #ffffff;
+			background-color: $tabs-bg;
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				right: 0;
+				background-color: transparent;
+				height: $radius * 2;
+				width: $radius;
+				pointer-events: none;
+				user-select: none;
+				-webkit-tap-highlight-color: transparent;
+			}
+			&::before {
+				top: $radius * -2;
+				border-bottom-right-radius: $radius;
+				box-shadow: 0 $radius 0 0 $tabs-bg;
+			}
+			&::after {
+				bottom: $radius * -2;
+				border-top-right-radius: $radius;
+				box-shadow: 0 $radius * -1 0 0 $tabs-bg;
+			}
+		}
+	}
+}
+
+/* Main Container Style */
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	background-color: $tabs-bg;
+	h1 {
+		color: #ffffff;
+		font-size: clamp(2rem, 5vw, 6rem);
+		font-weight: bold;
+	}
+}
+  </style>
+  <script>
+  /* "active" Class Toggler JS */
+const setActive = el => {
+    [...el.parentElement.children].forEach(sib => sib.classList.remove('active'))
+    el.classList.add('active')
+    }
+let navbar__item = [...document.body.querySelectorAll('.navbar-nav > .navbar-item')]
+navbar__item.forEach(el => el.addEventListener('click', e => setActive(el)))
+  </script>
+</head>
+<body>
+  <nav class="navbar">
+	<a href="/" target="_blank" class="navbar-brand">RA-<span>ST </span>😎</a>
+	<ul class="navbar-nav">
+		<li class="navbar-item active">
+			<a href="https://github.com/ra-st/" class="navbar-link"><span>Github</span></a>
+		</li>
+		<li class="navbar-item">
+			<a href="https://github.com/ra-st/.github/blob/main/profile/README.md" class="navbar-link"><span>About</span></a>
+		</li>
+		<li class="navbar-item">
+			<a href="https://github.com/orgs/ra-st/discussions" class="navbar-link"><span>Contact</span></a>
+		</li>
+	</ul>
+</nav>
+<!-- Container Section -->
+<main class="container">
+	<h1>Hello, World 🌏</h1>
+</main>
+</body>
+</html>
