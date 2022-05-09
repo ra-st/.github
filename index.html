@@ -1,158 +1,298 @@
 <html>
 <head>
-  <title>RAST Team</title>
-  <link href="https://avatars.githubusercontent.com/u/105214374?s=200&v=4" rel="shortcut icon">
+<title>RAST Team</title>
+<link href="https://avatars.githubusercontent.com/u/105214374?s=200&v=4" rel="shortcut icon">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--meta name="author" content=""-->
 <meta name="description" content="تیم RAST,طراحی داده  مشابه با سلام و دیجیکالا">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<style>
-  // SCSS Variables //
-$radius: 30px;
-$navbar-bg: #ffffff;
-$tabs-bg: #f66969;
+<link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,600,700,900);
+@blue: #8599b0;
 
-/* Reset CSS */
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-html {
-	font-size: 10px;
-	@media (max-width: 600px) {
-		font-size: 8px;
-	}
-}
 body {
-	background-color: $tabs-bg;
-	height: 100vh;
-	min-height: 400px;
-	display: flex;
-	align-items: center;
-	font-family: sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 200;
 }
 
-/* Navbar Style */
-.navbar {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 30rem;
-	height: 100%;
-	padding-left: 2rem;
-	background-color: $navbar-bg;
-	overflow-y: hidden;
-	&-brand{
-		color: #575757;
-		font-size: 3rem;
-		font-weight: bold;
-		text-decoration: none;
-		margin: 4rem 0 0.3rem;
-		span{
-			color: $tabs-bg;
-		}
-	}
-	&-nav {
-		width: 100%;
-		list-style: none;
-		margin: auto 0;
-	}
-	&-link {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		color: #222222;
-		font-size: 2rem;
-		text-decoration: none;
-		position: relative;
-		padding: 2rem;
-		border-radius: $radius 0 0 $radius;
-		-webkit-tap-highlight-color: transparent;
-		span{
-			position: relative;
-			z-index: 1;
-		}
-		&:hover{
-			text-decoration: underline $tabs-bg;
-		}
-	}
-	&-item {
-		margin: 3rem 0;
-		&.active .navbar-link {
-			color: #ffffff;
-			background-color: $tabs-bg;
-			&::before,
-			&::after {
-				content: "";
-				position: absolute;
-				right: 0;
-				background-color: transparent;
-				height: $radius * 2;
-				width: $radius;
-				pointer-events: none;
-				user-select: none;
-				-webkit-tap-highlight-color: transparent;
-			}
-			&::before {
-				top: $radius * -2;
-				border-bottom-right-radius: $radius;
-				box-shadow: 0 $radius 0 0 $tabs-bg;
-			}
-			&::after {
-				bottom: $radius * -2;
-				border-top-right-radius: $radius;
-				box-shadow: 0 $radius * -1 0 0 $tabs-bg;
-			}
-		}
-	}
+a.reset {
+  background: #787f81;
+  border-radius: 24px;
+  bottom: 20px;
+  color: #fff;
+  display: block;
+  left: 50%;
+  margin-left: -70px;
+  padding: 8px 0;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.15s ease-in;
+  width: 140px;
+
+  &:hover {
+    background: darken(#787f81, 15);
+    text-decoration: none;
+  }
 }
 
-/* Main Container Style */
-.container {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 100%;
-	background-color: $tabs-bg;
-	h1 {
-		color: #ffffff;
-		font-size: clamp(2rem, 5vw, 6rem);
-		font-weight: bold;
-	}
+div.holder {
+  position: absolute;
+  left: 50%;
+  margin: -50px 0 0 -50px;
+  top: 50%;
 }
-  </style>
-  <script>
-  /* "active" Class Toggler JS */
-const setActive = el => {
-    [...el.parentElement.children].forEach(sib => sib.classList.remove('active'))
-    el.classList.add('active')
+
+ul.titles {
+  margin: 0;
+  padding: 0;
+  li {
+    height: 100px;
+    font-size: 48px;
+    line-height: 2em;
+    list-style: none;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    text-transform: uppercase;
+    &.title1 {
+      transform: translate3d(0,-125%,0);
     }
-let navbar__item = [...document.body.querySelectorAll('.navbar-nav > .navbar-item')]
-navbar__item.forEach(el => el.addEventListener('click', e => setActive(el)))
-  </script>
+    &.title2 {
+      transform: translate3d(0,0,0);
+    }
+    &.title3 {
+      transform: translate3d(0,125%,0);
+    }
+    &.title-animate.title1 {
+      animation: title-animate1 1s 1 1.2s forwards;
+    }
+    &.title-animate.title2 {
+      animation: title-animate2 1.25s 1 1.4s forwards;
+    }
+    &.title-animate.title3 {
+      animation: title-animate3 1.5s 1 1.8s forwards;
+    }
+  }
+}
+
+div.dot {
+  background: @blue;
+  border-radius: 100px;
+  height: 100px;
+  overflow: hidden;
+  position: absolute;
+  width: 100px;
+
+  &.top {
+    z-index: 15;
+  }
+  &.mid {
+    z-index: 10;
+  }
+  &.btm {
+    z-index: 5;
+  }
+  &.dot1 {
+    animation: pickup1 1.5s 1 forwards;
+  }
+  &.dot2 {
+    animation: pickup2 1.5s 1 forwards;
+  }
+  &.dot3 {
+    animation: pickup3 1.5s 1 forwards;
+  }
+}
+
+// animation
+
+@keyframes title-animate1 {
+  0% {
+    opacity: 0;
+    transform: translate3d(0,-125%,0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(-75px,-125%,0);
+  }
+}
+@keyframes title-animate2 {
+  0% {
+    opacity: 0;
+    transform: translate3d(0,-0,0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(-75px,0,0);
+  }
+}
+@keyframes title-animate3 {
+  0% {
+    opacity: 0;
+    transform: translate3d(0,125%,0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(-75px,125%,0);
+  }
+}
+
+
+@keyframes pickup1 {
+  0% {
+    background: @blue;
+    box-shadow: 0 0 0 rgba(0,0,0,.3);
+    transform: scale3d(1,1,1) translate3d(0,0,0);
+  }
+  50% {
+    background: lighten(@blue,5);
+    box-shadow: 0 100px 30px rgba(0,0,0,0.1);
+    transform: scale3d(1.3,0.9,1) translate3d(0,-150%,0);
+  }
+  100% {
+    background: @blue;
+    box-shadow: none;
+    transform: scale3d(1,1,1) translate3d(-200%,-125%,0);
+  }
+}
+
+@keyframes pickup2 {
+  0% {
+    background: @blue;
+    box-shadow: 0 0 0 rgba(0,0,0,.4);
+    transform: scale3d(1,1,1) translate3d(0,0,0);
+  }
+  50% {
+    background: lighten(@blue,3);
+    box-shadow: 0 80px 20px rgba(0,0,0,0.15);
+    transform: scale3d(1.15,0.9,1) translate3d(0,-100%,0);
+  }
+  100% {
+    background: @blue;
+    box-shadow: none;
+    transform: scale3d(1,1,1) translate3d(-200%,0,0);
+  }
+}
+
+@keyframes pickup3 {
+  0% {
+    background: @blue;
+    box-shadow: 0 0 0 rgba(0,0,0,.5);
+    transform: scale3d(1,1,1) translate3d(0,0,0);
+  }
+  50% {
+    background: lighten(@blue,1);
+    box-shadow: 0 60px 10px rgba(0,0,0,0.3);
+    transform: scale3d(1.075,0.9,1) translate3d(0,-50%,0);
+  }
+  100% {
+    background: @blue;
+    box-shadow: none;
+    transform: scale3d(1,1,1) translate3d(-200%,125%,0);
+  }
+}
+</style>
+<script>
+$("a.reset").click(function(e){
+  e.preventDefault();
+
+  $("div.top").removeClass("dot1");
+  $("div.mid").removeClass("dot2");
+  $("div.btm").removeClass("dot3");
+  $("li.title-animate").removeClass("title-animate");
+
+  setTimeout(function(){
+    $("div.top").addClass("dot1");
+    $("div.mid").addClass("dot2");
+    $("div.btm").addClass("dot3");
+    $("ul.titles li").addClass("title-animate");
+  }, 500);
+});
+</script>
 </head>
 <body>
-  <nav class="navbar">
-	<a href="/" target="_blank" class="navbar-brand">RA-<span>ST </span>😎</a>
-	<ul class="navbar-nav">
-		<li class="navbar-item active">
-			<a href="https://github.com/ra-st/" class="navbar-link"><span>Github</span></a>
-		</li>
-		<li class="navbar-item">
-			<a href="https://github.com/ra-st/.github/blob/main/profile/README.md" class="navbar-link"><span>About</span></a>
-		</li>
-		<li class="navbar-item">
-			<a href="https://github.com/orgs/ra-st/discussions" class="navbar-link"><span>Contact</span></a>
-		</li>
-	</ul>
-</nav>
-<!-- Container Section -->
-<main class="container">
-	<h1>Hello, World 🌏</h1>
-</main>
+<div class="holder">
+  <div class="dot dot1 top">
+    <svg x="0px" y="0px" viewBox="0 0 101 101" xml:space="preserve">
+    <path id="XMLID_17_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M62.2,76.3H38.8c-1,0-1.9-0.8-1.9-1.9v-1.8c0-1,0.8-1.9,1.9-1.9h23.3c1,0,1.9,0.8,1.9,1.9v1.8C64,75.5,63.2,76.3,62.2,76.3z"/>
+    <path id="XMLID_16_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M79.6,39.9c0-16.1-13-29.1-29.1-29.1s-29.1,13-29.1,29.1c0,11.2,6.3,20.9,15.6,25.8c0,0.1,0,0.1,0,0.2V68c0,1.5,1.2,2.8,2.8,2.8
+      h21.5c1.5,0,2.8-1.2,2.8-2.8v-2.1c0-0.1,0-0.1,0-0.2C73.3,60.9,79.6,51.1,79.6,39.9z"/>
+    <path id="XMLID_15_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M62.2,81.9H38.8c-1,0-1.9-0.8-1.9-1.9v-1.8c0-1,0.8-1.9,1.9-1.9h23.3c1,0,1.9,0.8,1.9,1.9V80C64,81.1,63.2,81.9,62.2,81.9z"/>
+    <path id="XMLID_14_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M62.2,87.4H38.8c-1,0-1.9-0.8-1.9-1.9v-1.8c0-1,0.8-1.9,1.9-1.9h23.3c1,0,1.9,0.8,1.9,1.9v1.8C64,86.6,63.2,87.4,62.2,87.4z"/>
+    <path id="XMLID_13_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M42.9,87.4c0,1.5,1.2,2.8,2.8,2.8s2.8-1.2,2.8-2.8"/>
+    <path id="XMLID_10_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M52.6,87.4c0,1.5,1.2,2.8,2.8,2.8s2.8-1.2,2.8-2.8"/>
+    <line id="XMLID_19_" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="37.5" y1="40.8" x2="47.5" y2="70.8"/>
+    <line id="XMLID_18_" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="63.5" y1="40.8" x2="53.5" y2="70.8"/>
+    </svg>
+  </div>
+  <div class="dot dot2 mid">
+    <svg x="0px" y="0px" viewBox="0 0 101 101" xml:space="preserve">
+    <g id="XMLID_56_">
+      <path id="XMLID_22_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" d="
+        M78.2-8.2C55.8,14.1,46.2,19.1,46.2,19.1L65,38l18.9,18.9c0,0,4.9-9.7,27.3-32.1"/>
+
+        <polygon id="XMLID_54_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" points="
+        65,38 46.2,19.1 22.5,69.4 28.1,74.9 33.6,80.4 83.9,56.8 	"/>
+      <path id="XMLID_52_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" d="
+        M23.3,70.2c-2.6,2.6-2.6,6.8,0,9.4c2.6,2.6,6.8,2.6,9.4,0L23.3,70.2z"/>
+    </g>
+    </svg>
+  </div>
+  <div class="dot dot3 btm">
+    <svg x="0px" y="0px" viewBox="0 0 101 101" xml:space="preserve">
+    <g id="XMLID_121_">
+
+        <line id="XMLID_139_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" x1="-25.9" y1="36.1" x2="27.8" y2="5.1"/>
+
+        <line id="XMLID_138_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" x1="82.1" y1="36.1" x2="28.3" y2="67.1"/>
+
+        <polyline id="XMLID_137_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" points="
+        28.3,5.1 82.1,36.1 82.1,74.1 28.3,105.1 	"/>
+
+        <polygon id="XMLID_136_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" points="
+        27.8,105.1 -25.9,74.1 -25.9,36.1 27.8,67.1 	"/>
+
+        <ellipse id="XMLID_135_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" cx="28.7" cy="42.9" rx="11.1" ry="5.1"/>
+      <path id="XMLID_134_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" d="
+        M17.6,42.9v7c0,2.8,5,5.1,11.1,5.1s11.1-2.3,11.1-5.1v-7"/>
+
+        <ellipse id="XMLID_133_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" cx="28.7" cy="18.4" rx="11.1" ry="5.1"/>
+      <path id="XMLID_132_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" d="
+        M17.6,18.4v7c0,2.8,5,5.1,11.1,5.1s11.1-2.3,11.1-5.1v-7"/>
+
+        <ellipse id="XMLID_131_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" cx="3" cy="30.8" rx="11.1" ry="5.1"/>
+      <path id="XMLID_130_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" d="
+        M-8.1,30.8v7c0,2.8,5,5.1,11.1,5.1S14,40.6,14,37.8v-7"/>
+
+        <ellipse id="XMLID_129_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" cx="54" cy="30.8" rx="11.1" ry="5.1"/>
+      <path id="XMLID_123_" fill="none" stroke="#FFFFFF" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" d="
+        M42.9,30.8v7c0,2.8,5,5.1,11.1,5.1s11.1-2.3,11.1-5.1v-7"/>
+    </g>
+    </svg>
+  </div>
+  <ul class="titles">
+    <li class="title1 title-animate">
+      Idea
+    </li>
+    <li class="title2 title-animate">
+      Implement
+    </li>
+    <li class="title3 title-animate">
+      Execution
+    </li>
+  </ul>
+</div>
+
+<a href="https://github.com/ra-st/" class="reset">
+  Github
+</a>
 </body>
 </html>
