@@ -1,5 +1,5 @@
 ## سلام 🙌
 
-<center><img src='logo.png'></img></center>
+<center><img src="logo.PNG"></img></center>
 
 وب سایت:https://rast.cloudns.ph
